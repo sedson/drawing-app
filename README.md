@@ -1,8 +1,14 @@
 # Project 2
-# Drawing with friends
+# Drawing with Friends
 
 ## User Story
-This app will be based on an html canvas drawing tool. Users will be able to create and post drawings, view drawings made by other users, and draw on top of other people's drawings.
+This app will be based on an html canvas drawing tool. Users will be able to:
+  * Create a username and password, and choose a color
+  * Create drawings and post them to an index page
+  * View drawings on an index page
+  * Click a drawing to see a show page that includes info about who made and edited the drawing
+  * Edit old drawings by drawin on top of them
+  * See an index page for each user of the app that will show the drawings made by that user
 
 ## Models
 ```
