@@ -1,5 +1,5 @@
 # Project 2
-## Drawing with friends
+# Drawing with friends
 
 ## User Story
 This app will be based on an html canvas drawing tool. Users will be able to create and post drawings, view drawings made by other users, and draw on top of other people's drawings.
@@ -23,11 +23,11 @@ Drawing {
 }
 ```
 
-##Routes
+## Routes
 | HTTP | Route | Result |
 | ---- | ----- | ------ |
 | GET | /drawings/ | See all the drawings (each drawing links to its show page)
-| GET | /drawings/username | See all the drawings made or editied by a user
+| GET | /drawings/user | See all the drawings made or editied by a user
 | GET | /drawings/id | See one drawing including its edit history (usernames link to the userpage)
 | GET | /drawings/id/edit | Edit page for a drawing. Editing a drawing means drawing on top of it. Some drawing can be edited by any user. Other drawings can only be edited by the creator
 | GET | /drawings/new | Gets the new drawing page
