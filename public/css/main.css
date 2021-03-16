@@ -1,6 +1,6 @@
 * {
   font-size: 21px;
-  font-family: sans-serif;
+  font-family: monospace;
 }
 
 a {
@@ -12,7 +12,8 @@ img {
 }
 
 img, canvas, {
-  image-rendering: -moz-crisp-edges;
+  padding: 0;
+  margin: 0;
 
 }
 
@@ -20,9 +21,6 @@ img, canvas, {
   color: green;
 }
 
-#wipe {
-  color: red;
-}
 
 canvas {
   background-color: cornsilk;
@@ -39,4 +37,16 @@ img:hover {
   flex-flow: row wrap;
   align-items: center;
   justify-content: center;
+}
+
+button {
+  all: unset;
+  font-weight: bold;
+  text-decoration: underline;
+  color: dodgerblue;
+  cursor: pointer;
+}
+
+#wipe, .del {
+  color: red;
 }

@@ -1,20 +1,26 @@
-// utility to post drawing to our database
+// posts drawings to database
+// -----------------------------------------
+async function post() {
+  const request = {
+    method: 'POST',
+    mode: 'cors',
+    credentials: 'same-origin',
+    headers: {
+      'Content-Type' : 'application/json'
+    },
+    body: JSON.stringify({
+      img: canvas.toDataURL('image/png')
+    })
+  };
+  await fetch('/drawings', request);
+}
 
 const btn = document.querySelector('#post');
-// const canvas = document.querySelector('#artboard');
-
 btn.onclick = () => {
-  let request = new XMLHttpRequest();
-
-  request.open("POST", "/drawings", true);
-  request.setRequestHeader('Content-Type', 'application/json')
-
-  request.send(JSON.stringify({
-    img: canvas.toDataURL('image/png', 1),
-  }))
-
-  canvas.wipe();
-  Response.redirect('/drawings')
+  post().then(() => {
+    canvas.wipe();
+    window.location.pathname = '/drawings';
+  })
 }
 
 document.querySelector('#wipe').onclick = canvas.wipe;

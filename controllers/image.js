@@ -10,7 +10,7 @@ module.exports = router;
 
 const Drawing = require('../models/drawing')
 
-// GET IMAGE –––––––––––––––––––––––––––––––––––––––––
+// GET IMAGE –––––––––––––––––––––––––––––––
 router.get('/:id', (req, res) => {
 
   Drawing.findById(req.params.id, (err, data) => {
@@ -19,7 +19,10 @@ router.get('/:id', (req, res) => {
       return;
     }
 
+    if (! data.img) return;
+
     let imgDataUrl = data.img;
+
 
     // strip the data URL header
     imgDataUrl = imgDataUrl.split('base64,')[1];

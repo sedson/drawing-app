@@ -1,28 +1,36 @@
-// utility to post drawing to our database
+// renders image on canvas and puts updated
+// drawings to database
+// -----------------------------------------
 
+const id = window.location.pathname.split('/')[2];
 
-const btn = document.querySelector('#save');
-// const canvas = document.querySelector('#artboard');
-
-btn.onclick = () => {
-  let request = new XMLHttpRequest();
-
-  let url = document.URL.split('/');
-  let id = url[url.length - 2]
-
-  request.open("PUT", "/drawings/" + id, true);
-  request.setRequestHeader('Content-Type', 'application/json')
-
-  request.send(JSON.stringify({
-    img: canvas.toDataURL('image/png', 1),
-  }))
-
-
+async function update() {
+  const request = {
+    method: 'PUT',
+    mode: 'cors',
+    credentials: 'same-origin',
+    headers: {
+      'Content-Type' : 'application/json'
+    },
+    body: JSON.stringify({
+      img: canvas.toDataURL('image/png')
+    })
+  };
+  await fetch('/drawings/' + id, request);
 }
 
 
-// img.style.display = 'block'
-// img.src = img['data-src']
+const btn = document.querySelector('#save');
+
+btn.onclick = () => {
+  update().then(() => {
+    canvas.wipe();
+    window.location.pathname = '/drawings/' + id;
+  })
+}
+
+
+// Loading image onto canvas
 let dummy = document.querySelector('#art')
 
 let img = new Image();
