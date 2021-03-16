@@ -7,6 +7,10 @@ a {
   color: dodgerblue;
 }
 
+img {
+
+}
+
 img, canvas, {
   image-rendering: -moz-crisp-edges;
 
@@ -21,10 +25,18 @@ img, canvas, {
 }
 
 canvas {
-  background-color: yellow;
+  background-color: cornsilk;
   display: block;
 }
 
 img:hover {
   filter: invert(54%) sepia(83%) saturate(1646%) hue-rotate(78deg) brightness(111%) contrast(76%);
+}
+
+.container{
+  display: flex;
+  width: 100%;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
 }

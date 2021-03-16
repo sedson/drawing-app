@@ -13,7 +13,7 @@ canvas.wipe = () => ctx.clearRect(0, 0, canvas.width, canvas.height)
 // canvas.width = window.innerWidth;
 // canvas.height = window.innerHeight;
 
-const strokeWeight = 5;
+let strokeWeight = 5;
 const strokeSmoothing = 6;
 
 let fillCol = 'black';

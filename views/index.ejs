@@ -5,8 +5,11 @@
   </head>
   <body>
     <h1>INDEX | <a href="/drawings/new">NEW</a></h1>
-    <% data.forEach(item => { %>
-        <a href="drawings/<%=item.id%>"><img src="<%=item.img%>" alt="a drawing" width="128px" height="128px"></a>
-    <% }) %>
+    <div class="container">
+      <% data.forEach(item => { %>
+          <a href="drawings/<%=item.id%>"><img src="img/<%=item.id%>" alt="a drawing" width="200px" height="200px" loading="lazy"></a>
+      <% }) %>
+    </div>
+
   </body>
 </html>

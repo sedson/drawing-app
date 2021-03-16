@@ -20,5 +20,15 @@ btn.onclick = () => {
 
 }
 
-let img = document.querySelector('img')
-ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
+
+// img.style.display = 'block'
+// img.src = img['data-src']
+let dummy = document.querySelector('#art')
+
+let img = new Image();
+
+img.onload = () => {
+  ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
+}
+
+img.src = dummy.dataset.src

@@ -7,8 +7,8 @@
   </head>
   <body>
     <h1><a href="/drawings">INDEX</a> | <a id="save" href="#">SAVE</a></h1>
-    <img src="<%=item.img%>" alt="" style="display: none">
     <canvas id="artboard" width="400" height="400"></canvas>
+    <img src="" data-src="/img/<%=item.id%>" id="art">
     <form action="/drawings/<%=item.id%>?_method=DELETE" method="POST">
       <button>DELETE</button>
     </form>
