@@ -7,7 +7,7 @@ This app will be based on an html canvas drawing tool. Users will be able to:
   * Create drawings and post them to an index page
   * View drawings on an index page
   * Click a drawing to see a show page that includes info about who made and edited the drawing
-  * Edit old drawings by drawin on top of them
+  * Edit old drawings by drawing on top of them
   * See an index page for each user of the app that will show the drawings made by that user
 
 ## Models
@@ -39,4 +39,4 @@ Drawing {
 | GET | /drawings/new | Gets the new drawing page
 | POST | /drawings/ | adds new drawing to the database
 | PUT | /drawings/id | updates a drawing in the datatbase
-| DELETE | /drawing/ | 
+| DELETE | /drawing/ |

@@ -1,18 +1,22 @@
 // Canvas drawing tool
 
+// main stucture from DevEd youtube channel - https://youtu.be/3GqUM4mEYKA
 // some ideas borrowed from Charles Broskoski – http://charlesbroskoski.com/drawings/#
-// and from DevEd youtube channel https://youtu.be/3GqUM4mEYKA
+
 
 const canvas = document.querySelector('#artboard');
 const ctx = canvas.getContext("2d");
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+// Clears the canvas
+canvas.wipe = () => ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-const strokeWeight = 8;
+// canvas.width = window.innerWidth;
+// canvas.height = window.innerHeight;
+
+const strokeWeight = 5;
 const strokeSmoothing = 6;
 
-const fillCol = 'hotpink';
+let fillCol = 'black';
 
 let curX = 0, curY = 0, lastX = 0, lastY = 0;
 let drawing = false;
@@ -58,7 +62,6 @@ const draw = (event) => {
   let d = distanceSquared(curX, curY, lastX, lastY);
 
   let stroke = strokeWeight - (d / (strokeWeight * strokeWeight))
-
   stroke = Math.max(1, stroke)
   stroke = updateStrokeArray(strokeHistory, stroke)
 
@@ -75,6 +78,7 @@ const draw = (event) => {
   lastX = curX;
   lastY = curY;
 }
+
 
 canvas.onmousedown = startDraw;
 canvas.onmouseup = endDraw;

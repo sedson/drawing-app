@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <%- include('./partials/head.ejs') %>
+  </head>
+  <body>
+    <h1>INDEX | <a href="/drawings/new">NEW</a></h1>
+    <% data.forEach(item => { %>
+        <a href="drawings/<%=item.id%>"><img src="<%=item.img%>" alt="a drawing" width="128px" height="128px"></a>
+    <% }) %>
+  </body>
+</html>

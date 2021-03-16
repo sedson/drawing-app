@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <%- include('./partials/head.ejs') %>
+  </head>
+  <body>
+    <h1><a href="/drawings">INDEX</a> | <a href="/drawings/<%=item.id%>/edit">EDIT</a></h1>
+    <img src="<%=item.img%>" alt="">
+
+    <form action="/drawings/<%=item.id%>?_method=DELETE" method="POST">
+      <button>DELETE</button>
+    </form>
+</html>

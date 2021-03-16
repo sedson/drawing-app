@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <%- include('./partials/head.ejs') %>
+    <script type="text/javascript" src="/js/draw.js" defer></script>
+    <script type="text/javascript" src="/js/paste.js" defer></script>
+  </head>
+  <body>
+    <h1><a href="/drawings">INDEX</a> | <a id="save" href="#">SAVE</a></h1>
+    <img src="<%=item.img%>" alt="" style="display: none">
+    <canvas id="artboard" width="400" height="400"></canvas>
+    <form action="/drawings/<%=item.id%>?_method=DELETE" method="POST">
+      <button>DELETE</button>
+    </form>
+</html>

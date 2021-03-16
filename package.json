@@ -1,0 +1,28 @@
+{
+  "name": "project-2",
+  "version": "1.0.0",
+  "description": "## User Story This app will be based on an html canvas drawing tool. Users will be able to:   * Create a username and password, and choose a color   * Create drawings and post them to an index page   * View drawings on an index page   * Click a drawing to see a show page that includes info about who made and edited the drawing   * Edit old drawings by drawing on top of them   * See an index page for each user of the app that will show the drawings made by that user",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sedson/drawing-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sedson/drawing-app/issues"
+  },
+  "homepage": "https://github.com/sedson/drawing-app#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "image-data-uri": "^2.0.1",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.12.0"
+  }
+}

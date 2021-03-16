@@ -1,0 +1,30 @@
+* {
+  font-size: 21px;
+  font-family: sans-serif;
+}
+
+a {
+  color: dodgerblue;
+}
+
+img, canvas, {
+  image-rendering: -moz-crisp-edges;
+
+}
+
+#post, #save {
+  color: green;
+}
+
+#wipe {
+  color: red;
+}
+
+canvas {
+  background-color: yellow;
+  display: block;
+}
+
+img:hover {
+  filter: invert(54%) sepia(83%) saturate(1646%) hue-rotate(78deg) brightness(111%) contrast(76%);
+}
