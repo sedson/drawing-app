@@ -16,13 +16,15 @@ router.get('/:id', (req, res) => {
   Drawing.findById(req.params.id, (err, data) => {
     if (err) {
       console.log (err.message);
+      res.status(400).send('db error');
       return;
     }
 
-    if (! data.img) return;
+    if (! data.img) {
+      res.status(400).send('no image dat found')
+    }
 
     let imgDataUrl = data.img;
-
 
     // strip the data URL header
     imgDataUrl = imgDataUrl.split('base64,')[1];

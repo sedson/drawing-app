@@ -25,9 +25,11 @@ db.on('disconnected', ()=> { console.log("mongo disconnected")})
 
 // MIDDLEWARE
 app.use(express.static('public'))
-app.use(express.json())
+app.use(express.json({limit: '10mb'}))
 app.use(express.urlencoded({extended: true}))
+
 app.use(require('method-override')('_method'))
+
 
 
 const drawingsRoutes = require('./controllers/drawing')
@@ -35,7 +37,6 @@ app.use('/drawings', drawingsRoutes)
 
 const imageAPI = require('./controllers/image')
 app.use('/img', imageAPI)
-
 
 
 const port = process.env.PORT || 3000;

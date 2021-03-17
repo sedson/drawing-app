@@ -1,8 +1,7 @@
 // Canvas drawing tool
-
 // main stucture from DevEd youtube channel - https://youtu.be/3GqUM4mEYKA
 // some ideas borrowed from Charles Broskoski – http://charlesbroskoski.com/drawings/#
-
+// -----------------------------------------
 
 const canvas = document.querySelector('#artboard');
 const ctx = canvas.getContext("2d");

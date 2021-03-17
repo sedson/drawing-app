@@ -4,10 +4,10 @@
     <%- include('./partials/head.ejs') %>
   </head>
   <body>
-    <h1>INDEX | <a href="/drawings/new">NEW</a></h1>
+    <h1>Index | <a href="/drawings/new">New</a></h1>
     <div class="container">
       <% data.forEach(item => { %>
-          <a href="drawings/<%=item.id%>"><img src="img/<%=item.id%>" alt="a drawing" width="200px" height="200px" loading="lazy"></a>
+          <a href="drawings/<%=item.id%>"><img src="img/<%=item.id%>" alt="" width="200px" height="200px"></a>
       <% }) %>
     </div>
 

@@ -32,6 +32,7 @@ Drawing {
 ## Routes
 | HTTP | Route | Result |
 | ---- | ----- | ------ |
+| GET | /img/id | Gets the image from datatbase as blob data (used in <img src="...">)
 | GET | /drawings/ | See all the drawings (each drawing links to its show page)
 | GET | /drawings/user | See all the drawings made or editied by a user
 | GET | /drawings/id | See one drawing including its edit history (usernames link to the userpage)

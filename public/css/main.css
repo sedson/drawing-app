@@ -1,6 +1,7 @@
 * {
   font-size: 21px;
-  font-family: monospace;
+  font-family: sans-serif;
+  font-weight: normal;
 }
 
 a {
@@ -41,7 +42,6 @@ img:hover {
 
 button {
   all: unset;
-  font-weight: bold;
   text-decoration: underline;
   color: dodgerblue;
   cursor: pointer;

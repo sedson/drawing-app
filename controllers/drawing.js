@@ -13,6 +13,13 @@ router.get('/', (req, res) => {
   })
 })
 
+// JSON ––––––––––––––––––––––––––––––––––––
+router.get('/json', (req, res) => {
+  Drawing.find({}, '-img', (err, data) => {
+    res.json(data);
+  })
+})
+
 // NEW –––––––––––––––––––––––––––––––––––––
 router.get('/new', (req, res) => {
   res.render('new.ejs')

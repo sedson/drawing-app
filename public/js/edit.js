@@ -2,6 +2,7 @@
 // drawings to database
 // -----------------------------------------
 
+// current ID
 const id = window.location.pathname.split('/')[2];
 
 async function update() {
