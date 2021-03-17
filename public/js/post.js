@@ -1,6 +1,6 @@
 // posts drawings to database
 // -----------------------------------------
-async function post() {
+const post = async() => {
   const request = {
     method: 'POST',
     mode: 'cors',

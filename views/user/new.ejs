@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <%- include('../partials/head.ejs') %>
+  </head>
+  <body>
+    <%- include('../partials/nav.ejs') %>
+    <h1>New User</h1>
+    <form action="/users/" method="POST">
+      username: <input type="text" name="username" placeholder="username"><br>
+      password: <input type="text" name="password" placeholder="password"><br>
+      color: <input type="text" name="color" placeholder="a css color"><br>
+      <button>Submit</button>
+    </form>
+  </body>
+</html>

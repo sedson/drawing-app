@@ -3,9 +3,11 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 
+const session = require('express-session')
+
 const mongoose = require('mongoose');
 
-const mongoURI = 'mongodb://127.0.0.1:27017/project';
+const mongoURI = 'mongodb://127.0.0.1:27017/project2';
 
 const db = mongoose.connection;
 
@@ -30,13 +32,38 @@ app.use(express.urlencoded({extended: true}))
 
 app.use(require('method-override')('_method'))
 
+app.use(session({
+  secret: "sec",
+  resave: false,
+   saveUninitialized: false
+}))
+
+const isAuthenticated = (req, res, next) => {
+  if(req.session.currentUser) {
+    return next();
+  } else {
+    res.redirect('/session/new')
+  }
+}
 
 
-const drawingsRoutes = require('./controllers/drawing')
-app.use('/drawings', drawingsRoutes)
+const drawings = require('./controllers/drawing')
+app.use('/drawings', drawings)
+
+const sessions = require('./controllers/session')
+app.use('/sessions', sessions)
+
+const user = require('./controllers/user')
+app.use('/users', user)
+
 
 const imageAPI = require('./controllers/image')
 app.use('/img', imageAPI)
+
+
+app.get('/', (req, res) => {
+  res.render('home.ejs')
+})
 
 
 const port = process.env.PORT || 3000;

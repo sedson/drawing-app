@@ -50,3 +50,17 @@ button {
 #wipe, .del {
   color: red;
 }
+
+nav {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border-bottom: 2px dotted black;
+  height: 1.5rem;
+}
+
+nav p {
+  padding: 0;
+  margin: 0;
+
+}

@@ -5,7 +5,7 @@
 // current ID
 const id = window.location.pathname.split('/')[2];
 
-async function update() {
+const update = async() => {
   const request = {
     method: 'PUT',
     mode: 'cors',

@@ -9,7 +9,7 @@ const Drawing = require('../models/drawing')
 router.get('/', (req, res) => {
   Drawing.find({}, (err, data) => {
     if (err) return
-    res.render('index.ejs', {data: data})
+    res.render('drawing/index.ejs', {data: data})
   })
 })
 
@@ -22,14 +22,14 @@ router.get('/json', (req, res) => {
 
 // NEW –––––––––––––––––––––––––––––––––––––
 router.get('/new', (req, res) => {
-  res.render('new.ejs')
+  res.render('drawing/new.ejs')
 })
 
 
 // EDIT ––––––––––––––––––––––––––––––––––––
 router.get('/:id/edit', (req, res) => {
   Drawing.findById(req.params.id, (err, data) => {
-    res.render('edit.ejs', {item: data})
+    res.render('drawing/edit.ejs', {item: data})
   })
 })
 
@@ -71,6 +71,6 @@ router.delete('/:id', (req, res) => {
 // SHOW ––––––––––––––––––––––––––––––––––––
 router.get('/:id', (req, res) => {
   Drawing.findById(req.params.id, (err, data) => {
-    res.render('show.ejs', {item: data})
+    res.render('drawing/show.ejs', {item: data})
   })
 })
