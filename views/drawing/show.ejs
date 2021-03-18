@@ -7,18 +7,27 @@
     <%- include('../partials/nav.ejs') %>
     <h1><a href="/drawings">Index</a> | <a href="/drawings/<%=item.id%>/edit">Edit</a></h1>
     <img src="/img/<%=item.id%>" alt="">
-    <% if (item.title) { %>
-      <p><%=item.title%></p>
-    <% }%>
-    <p>Drawn by: <%=item.createdBy%></p>
-    <p><%=(new Date(item.createdAt)).toLocaleString()%></p>
+    <p>
+      <%= item.title || 'Drawn' %> by
+      <span class="avi" style="background-color: <%= item.color || 'silver' %>"></span>
+      <%= item.createdBy %>
+    </p>
+    <p class="timestamp">
+      <%=(new Date(item.createdAt)).toLocaleString('en-US', {dateStyle: 'long', timeStyle: 'short'})%>
+    </p>
     <% if (item.editLog) { %>
       <% item.editLog.forEach(edit => { %>
-        <p>Edited by <%=edit.editedBy%></p>
+        <p>Edited by
+          <span class="avi" style="background-color: <%= edit.editColor || 'silver' %>"></span>
+          <%=edit.editedBy%>
+        </p>
+        <p class="timestamp">
+          <%=(new Date(edit.editedAt)).toLocaleString('en-US', {dateStyle: 'long', timeStyle: 'short'})%>
+        </p>
       <% }) %>
     <% } %>
 
-    <% if (item.createdBy === currentUser.username) { %>
+    <% if (currentUser && (currentUser.admin || item.createdBy === currentUser.username)) { %>
       <form action="/drawings/<%=item.id%>?_method=DELETE" method="POST">
         <button class="del">Delete</button>
       </form>

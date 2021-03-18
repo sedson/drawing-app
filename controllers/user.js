@@ -6,7 +6,9 @@ const User = require('../models/user');
 module.exports = router;
 
 router.get('/new', (req, res) => {
-  res.render('user/new.ejs', {user: req.session.currentUser})
+  res.render('user/new.ejs', {
+    currentUser: req.session.currentUser || null
+  })
 })
 
 router.get('/json', (req, res) => {

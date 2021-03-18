@@ -1,12 +1,11 @@
 <nav>
   <img src="/favicon.png" alt="" width="21px" height="21px">
-  <!-- <a href="/drawings/"><img src="/pencil.png" alt="" class="clickable" width="21px" height="21px"></a> -->
-
-  <a href="/drawings" class="home clickable">Drawing with My Friends Online</a>
-  <% if (typeof currentUser == 'undefined') { %>
-    <a href="/sessions/new">Log In</a>
-  <% } else { %>
-    <span><%=currentUser.username%></span>
+  <a href="/drawings" class="home clickable">Drawing with My Friends</a>
+  <% if (currentUser) { %>
     <div class="swatch" style="background-color: <%=currentUser.color%>"></div>
+    <span><%=currentUser.username%></span>
+  <% } else { %>
   <% } %>
+  <a href="/menu">Menu</a>
+  
 </nav>

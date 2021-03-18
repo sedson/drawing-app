@@ -11,13 +11,20 @@ router.get('/new', (req, res) => {
 router.post('/', (req, res) => {
   console.log(req.body)
   User.findOne({username: req.body.username}, (err, user) => {
+
     if (err) {
-      res.render('error.ejs', {message: err.message})
+      res.render('error.ejs', {
+        message: err.message,
+        currentUser: req.session.currentUser || null
+      })
       return;
     }
 
     if(! user){
-      res.render('error.ejs', {message: 'No user found'})
+      res.render('error.ejs', {
+        message: 'No user found',
+        currentUser: req.session.currentUser || null
+      })
       return;
     }
 
@@ -27,12 +34,15 @@ router.post('/', (req, res) => {
       res.redirect('/drawings')
 
     } else {
-      res.render('error.ejs', {message: 'Invalid Password'})
+      res.render('error.ejs', {
+        message: 'Invalid Password',
+        currentUser: req.session.currentUser || null
+      })
     }
   })
 })
 
-router.delete('/', (req, res) => {
+router.get('/end', (req, res) => {
   req.session.destroy(() => {
     res.redirect('/drawings')
   })

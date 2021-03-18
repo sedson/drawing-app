@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
     if (err) return
     res.render('drawing/index.ejs', {
       data: data,
-      currentUser: req.session.currentUser
+      currentUser: req.session.currentUser || null
     })
   })
 })
@@ -26,7 +26,7 @@ router.get('/json', (req, res) => {
 // NEW –––––––––––––––––––––––––––––––––––––
 router.get('/new', (req, res) => {
   res.render('drawing/new.ejs', {
-    currentUser: req.session.currentUser
+    currentUser: req.session.currentUser || null
   })
 })
 
@@ -36,7 +36,7 @@ router.get('/:id/edit', (req, res) => {
   Drawing.findById(req.params.id, (err, data) => {
     res.render('drawing/edit.ejs', {
       item: data,
-      currentUser: req.session.currentUser
+      currentUser: req.session.currentUser || null
     })
   })
 })
@@ -120,7 +120,7 @@ router.get('/:id', (req, res) => {
   Drawing.findById(req.params.id, (err, data) => {
     res.render('drawing/show.ejs', {
       item: data,
-      currentUser: req.session.currentUser
+      currentUser: req.session.currentUser || null
     })
   })
 })

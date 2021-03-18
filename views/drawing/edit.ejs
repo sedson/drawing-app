@@ -10,8 +10,5 @@
     <%- include('../partials/nav.ejs') %>
     <h1><a href="/drawings">Index</a> | <a id="save" href="#">Save</a></h1>
     <canvas id="artboard" width="400" height="400"></canvas>
-    <form action="/drawings/<%=item.id%>?_method=DELETE" method="POST">
-      <button class="del">Delete</button>
-    </form>
     <img src="" data-src="/img/<%=item.id%>" id="art">
 </html>

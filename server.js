@@ -63,12 +63,20 @@ app.use('/img', imageAPI)
 
 
 app.get('/', (req, res) => {
-  console.log(req.session)
-  res.render('home.ejs', {currentUser: req.session.currentUser})
+  res.redirect('/drawings')
+})
+
+app.get('/menu', (req, res) => {
+  res.render('menu.ejs', {
+    currentUser: req.session.currentUser || null
+  })
 })
 
 app.get('/error', (req, res) => {
-  res.render('error.ejs', {message: 'oops'})
+  res.render('error.ejs', {
+    currentUser: req.session.currentUser || null,
+    message: 'oops',
+  })
 })
 
 

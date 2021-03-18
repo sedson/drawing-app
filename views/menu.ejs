@@ -5,8 +5,11 @@
   </head>
   <body>
     <%- include('./partials/nav.ejs') %>
-    <p><a href="/drawings">View Drawings</a></p>
+    <% if (currentUser) { %>
+      <p><a href="/sessions/end">Log Out</a>
+    <% } else { %>
+      <p><a href="/sessions/new">Log In</a></p>
+    <% } %>
     <p><a href="/users/new">New User</a></p>
-    <p><a href="/sessions/new">New Session (login)</a></p>
   </body>
 </html>
