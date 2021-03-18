@@ -28,8 +28,17 @@ canvas {
   display: block;
 }
 
-img:hover {
+img.clickable:hover {
   filter: invert(54%) sepia(83%) saturate(1646%) hue-rotate(78deg) brightness(111%) contrast(76%);
+}
+
+
+.clickable:hover{
+  color: limegreen;
+}
+
+.home {
+  color: black;
 }
 
 .container{
@@ -57,10 +66,25 @@ nav {
   padding: 0;
   border-bottom: 2px dotted black;
   height: 1.5rem;
+  display: flex;
+  justify-content: flex-start;
 }
 
 nav p {
   padding: 0;
   margin: 0;
 
+}
+
+.right{
+  float: right;
+}
+
+nav * {
+  margin-right: 1rem;
+}
+
+.swatch {
+  width: 1rem;
+  height: 1rem;
 }

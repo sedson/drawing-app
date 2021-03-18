@@ -4,7 +4,7 @@
     <%- include('./partials/head.ejs') %>
   </head>
   <body>
-    <%- include('./partials/nav.ejs') %>
+    <%- include('./partials/nav.ejs', {currentUser: currentUser}) %>
     <p><a href="/drawings">View Drawings</a></p>
     <p><a href="/users/new">New User</a></p>
     <p><a href="/sessions/new">New Session (login)</a></p>

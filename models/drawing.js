@@ -3,7 +3,10 @@ const Schema = mongoose.Schema
 
 
 const DrawingSchema = new Schema({
-  img: String
+  img: {type: String},
+  title: {type: String},
+  createdBy: {type: String},
+  createdAt: {type: Number},  
 })
 
 const Drawing = mongoose.model('Drawing', DrawingSchema)

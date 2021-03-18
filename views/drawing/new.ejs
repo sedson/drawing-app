@@ -2,12 +2,21 @@
 <html lang="en" dir="ltr">
   <head>
     <%- include('../partials/head.ejs') %>
-    <script type="text/javascript" src="/js/draw.js" defer></script>
-    <script type="text/javascript" src="/js/post.js" defer></script>
+
+    <script type="text/javascript" src="/js/draw.js" defer ></script>
+    <script type="text/javascript" src="/js/post.js" defer ></script>
+
+    <%- include('../partials/usercolor.ejs') %>
+
+
   </head>
   <body>
     <%- include('../partials/nav.ejs') %>
     <h1><a href="/drawings">Index</a> | <a id="post" href="#">Post</a> | <a id="wipe" href="">Clear</a></h1>
     <canvas id="artboard" width="400" height="400"></canvas>
   </body>
+
+
+
+
 </html>

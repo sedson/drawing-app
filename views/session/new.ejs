@@ -4,7 +4,7 @@
     <%- include('../partials/head.ejs') %>
   </head>
   <body>
-    <%- include('../partials/nav.ejs') %>
+    <%- include('../partials/nav.ejs', {currentUser: currentUser}) %>
     <h1>New Session</h1>
     <form action="/sessions/" method="POST">
       username: <input type="text" name="username" placeholder="username"><br>

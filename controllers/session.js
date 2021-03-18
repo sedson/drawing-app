@@ -8,10 +8,6 @@ router.get('/new', (req, res) => {
   res.render('session/new.ejs', { currentUser: req.session.currentUser });
 })
 
-router.get('/', (req, res) => {
-  res.send('Sessions')
-})
-
 router.post('/', (req, res) => {
   console.log(req.body)
   User.findOne({username: req.body.username}, (err, user) => {
@@ -28,10 +24,16 @@ router.post('/', (req, res) => {
     if(req.body.password === user.password){
       req.session.currentUser = user;
       console.log(req.session)
-      res.redirect('/')
+      res.redirect('/drawings')
 
     } else {
       res.render('error.ejs', {message: 'Invalid Password'})
     }
+  })
+})
+
+router.delete('/', (req, res) => {
+  req.session.destroy(() => {
+    res.redirect('/drawings')
   })
 })

@@ -24,3 +24,6 @@ btn.onclick = () => {
 }
 
 document.querySelector('#wipe').onclick = canvas.wipe;
+
+
+console.log('should be 2st')

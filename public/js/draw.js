@@ -15,7 +15,7 @@ canvas.wipe = () => ctx.clearRect(0, 0, canvas.width, canvas.height)
 let strokeWeight = 5;
 const strokeSmoothing = 6;
 
-let fillCol = 'black';
+let fillCol = userColor || 'black';
 
 let curX = 0, curY = 0, lastX = 0, lastY = 0;
 let drawing = false;

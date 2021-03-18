@@ -42,13 +42,14 @@ const isAuthenticated = (req, res, next) => {
   if(req.session.currentUser) {
     return next();
   } else {
-    res.redirect('/session/new')
+    // res.redirect('/sessions/new')
+    return next();
   }
 }
 
 
 const drawings = require('./controllers/drawing')
-app.use('/drawings', drawings)
+app.use('/drawings', isAuthenticated, drawings)
 
 const sessions = require('./controllers/session')
 app.use('/sessions', sessions)
@@ -62,7 +63,8 @@ app.use('/img', imageAPI)
 
 
 app.get('/', (req, res) => {
-  res.render('home.ejs')
+  console.log(req.session)
+  res.render('home.ejs', {currentUser: req.session.currentUser})
 })
 
 

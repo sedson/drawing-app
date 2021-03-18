@@ -9,7 +9,10 @@ const Drawing = require('../models/drawing')
 router.get('/', (req, res) => {
   Drawing.find({}, (err, data) => {
     if (err) return
-    res.render('drawing/index.ejs', {data: data})
+    res.render('drawing/index.ejs', {
+      data: data,
+      currentUser: req.session.currentUser
+    })
   })
 })
 
@@ -22,19 +25,26 @@ router.get('/json', (req, res) => {
 
 // NEW –––––––––––––––––––––––––––––––––––––
 router.get('/new', (req, res) => {
-  res.render('drawing/new.ejs')
+  res.render('drawing/new.ejs', {
+    currentUser: req.session.currentUser
+  })
 })
 
 
 // EDIT ––––––––––––––––––––––––––––––––––––
 router.get('/:id/edit', (req, res) => {
   Drawing.findById(req.params.id, (err, data) => {
-    res.render('drawing/edit.ejs', {item: data})
+    res.render('drawing/edit.ejs', {
+      item: data,
+      currentUser: req.session.currentUser
+    })
   })
 })
 
 // CREATE / POST –––––––––––––––––––––––––––
 router.post('/', (req, res) => {
+  req.body.createdBy = req.session.currentUser.username;
+  req.body.createdAt = Date.now();
   Drawing.create(req.body, (err, data) => {
     if(err){
       console.log(err.message)
@@ -71,6 +81,9 @@ router.delete('/:id', (req, res) => {
 // SHOW ––––––––––––––––––––––––––––––––––––
 router.get('/:id', (req, res) => {
   Drawing.findById(req.params.id, (err, data) => {
-    res.render('drawing/show.ejs', {item: data})
+    res.render('drawing/show.ejs', {
+      item: data,
+      currentUser: req.session.currentUser
+    })
   })
 })
