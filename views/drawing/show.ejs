@@ -4,13 +4,23 @@
     <%- include('../partials/head.ejs') %>
   </head>
   <body>
-    <%- include('../partials/nav.ejs', {currentUser: currentUser}) %>
+    <%- include('../partials/nav.ejs') %>
     <h1><a href="/drawings">Index</a> | <a href="/drawings/<%=item.id%>/edit">Edit</a></h1>
     <img src="/img/<%=item.id%>" alt="">
+    <% if (item.title) { %>
+      <p><%=item.title%></p>
+    <% }%>
     <p>Drawn by: <%=item.createdBy%></p>
     <p><%=(new Date(item.createdAt)).toLocaleString()%></p>
-    <form action="/drawings/<%=item.id%>?_method=DELETE" method="POST">
-      <button class="del">Delete</button>
-    </form>
+    <% if (item.editLog) { %>
+      <% item.editLog.forEach(edit => { %>
+        <p>Edited by <%=edit.editedBy%></p>
+      <% }) %>
+    <% } %>
 
+    <% if (item.createdBy === currentUser.username) { %>
+      <form action="/drawings/<%=item.id%>?_method=DELETE" method="POST">
+        <button class="del">Delete</button>
+      </form>
+    <% } %>
 </html>

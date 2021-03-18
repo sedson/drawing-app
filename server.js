@@ -67,6 +67,10 @@ app.get('/', (req, res) => {
   res.render('home.ejs', {currentUser: req.session.currentUser})
 })
 
+app.get('/error', (req, res) => {
+  res.render('error.ejs', {message: 'oops'})
+})
+
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {

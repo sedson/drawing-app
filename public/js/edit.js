@@ -17,27 +17,33 @@ const update = async() => {
       img: canvas.toDataURL('image/png')
     })
   };
-  await fetch('/drawings/' + id, request);
+  return await fetch('/drawings/' + id, request);
 }
 
 
 const btn = document.querySelector('#save');
 
 btn.onclick = () => {
-  update().then(() => {
-    canvas.wipe();
+  update().then(response => {
+    if (! response.ok) {
+      return;
+    }
     window.location.pathname = '/drawings/' + id;
   })
 }
 
 
 // Loading image onto canvas
-let dummy = document.querySelector('#art')
 
-let img = new Image();
+const loadCanvas = () => {
+  let dummy = document.querySelector('#art');
+  let img = new Image();
 
-img.onload = () => {
-  ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
+  img.onload = () => {
+    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+  }
+
+  img.src = dummy.dataset.src;
 }
 
-img.src = dummy.dataset.src
+loadCanvas();

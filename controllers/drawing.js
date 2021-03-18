@@ -43,9 +43,23 @@ router.get('/:id/edit', (req, res) => {
 
 // CREATE / POST –––––––––––––––––––––––––––
 router.post('/', (req, res) => {
-  req.body.createdBy = req.session.currentUser.username;
-  req.body.createdAt = Date.now();
-  Drawing.create(req.body, (err, data) => {
+
+  if (! req.session.currentUser) {
+    res.status(400).send();
+    return;
+  }
+  console.log(req.body.title);
+
+  const newDrawing = {
+    img: req.body.img,
+    title: req.body.title,
+    createdBy: req.session.currentUser.username,
+    createdAt: Date.now(),
+    color: req.session.currentUser.color,
+    editLog: []
+  }
+
+  Drawing.create(newDrawing, (err, data) => {
     if(err){
       console.log(err.message)
     } else {
@@ -57,7 +71,30 @@ router.post('/', (req, res) => {
 
 // UPDATE ––––––––––––––––––––––––––––––––––
 router.put('/:id', (req, res) => {
-  Drawing.findByIdAndUpdate(req.params.id, req.body, (err, data) => {
+
+  if (! req.session.currentUser) {
+    res.status(400).send();
+    return;
+  }
+
+  const newEdit = {
+    editedBy: req.session.currentUser.username,
+    editedAt: Date.now(),
+    editColor: req.session.currentUser.color
+  }
+
+  const updateOperation = {
+    $set: {
+      img: req.body.img
+    },
+    $push: {
+      editLog: newEdit
+    }
+  }
+
+
+
+  Drawing.findByIdAndUpdate(req.params.id, updateOperation, (err, data) => {
     if(err) {
       console.log(err.message)
     } else {

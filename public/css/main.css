@@ -88,3 +88,8 @@ nav * {
   width: 1rem;
   height: 1rem;
 }
+
+#warning {
+  color: orange;
+  border: 1px solid orange;
+}

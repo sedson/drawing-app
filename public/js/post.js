@@ -9,21 +9,25 @@ const post = async() => {
       'Content-Type' : 'application/json'
     },
     body: JSON.stringify({
-      img: canvas.toDataURL('image/png')
+      img: canvas.toDataURL('image/png'),
+      title: document.querySelector('#title').value
     })
   };
-  await fetch('/drawings', request);
+  return await fetch('/drawings', request);
 }
 
 const btn = document.querySelector('#post');
 btn.onclick = () => {
-  post().then(() => {
+  post().then((response) => {
+    if(! response.ok) {
+      let w = document.querySelector('#warning')
+      w.style.display = 'block'
+      w.textContent = 'Log in to Post'
+      return
+    }
     canvas.wipe();
     window.location.pathname = '/drawings';
   })
 }
 
 document.querySelector('#wipe').onclick = canvas.wipe;
-
-
-console.log('should be 2st')
