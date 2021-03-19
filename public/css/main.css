@@ -29,8 +29,16 @@ canvas {
   display: block;
 }
 
+img.clickable{
+  filter: brightness(0%) saturate(0%) ;
+}
+
 img.clickable:hover {
-  filter: invert(54%) sepia(83%) saturate(1646%) hue-rotate(78deg) brightness(111%) contrast(76%);
+  filter: none;
+
+  border-radius: 5px;
+  outline: 1px dotted black;
+
 }
 
 
