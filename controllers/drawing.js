@@ -5,6 +5,8 @@ module.exports = router;
 
 const Drawing = require('../models/drawing')
 
+const timeSince = require('../utils/timesince')
+
 // INDEX –––––––––––––––––––––––––––––––––––
 router.get('/', (req, res) => {
   Drawing.find({}, (err, data) => {
@@ -19,6 +21,12 @@ router.get('/', (req, res) => {
 // JSON ––––––––––––––––––––––––––––––––––––
 router.get('/json', (req, res) => {
   Drawing.find({}, '-img', (err, data) => {
+    res.json(data);
+  })
+})
+
+router.get('/json/all', (req, res) => {
+  Drawing.find({}, (err, data) => {
     res.json(data);
   })
 })
@@ -120,7 +128,8 @@ router.get('/:id', (req, res) => {
   Drawing.findById(req.params.id, (err, data) => {
     res.render('drawing/show.ejs', {
       item: data,
-      currentUser: req.session.currentUser || null
+      currentUser: req.session.currentUser || null,
+      timeSince: timeSince
     })
   })
 })

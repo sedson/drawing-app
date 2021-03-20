@@ -30,7 +30,6 @@ router.post('/', (req, res) => {
 
     if(req.body.password === user.password){
       req.session.currentUser = user;
-      console.log(req.session)
       res.redirect('/drawings')
 
     } else {

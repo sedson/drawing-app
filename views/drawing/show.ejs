@@ -13,16 +13,16 @@
       <%= item.createdBy %>
     </p>
     <p class="timestamp">
-      <%=(new Date(item.createdAt)).toLocaleString('en-US', {dateStyle: 'long', timeStyle: 'short'})%>
+      <%= timeSince(item.createdAt) %>
     </p>
     <% if (item.editLog) { %>
       <% item.editLog.forEach(edit => { %>
         <p>Edited by
           <span class="avi" style="background-color: <%= edit.editColor || 'silver' %>"></span>
-          <%=edit.editedBy%>
+          <%= edit.editedBy %>
         </p>
         <p class="timestamp">
-          <%=(new Date(edit.editedAt)).toLocaleString('en-US', {dateStyle: 'long', timeStyle: 'short'})%>
+          <%= timeSince(edit.editedAt) %>
         </p>
       <% }) %>
     <% } %>
