@@ -4,9 +4,10 @@
     <%- include('./partials/head.ejs') %>
   </head>
   <body>
+    <%- include('./partials/nav.ejs') %>
     <div class="content">
       <h1>Menu</h1>
-      <%- include('./partials/nav.ejs') %>
+
       <% if (currentUser) { %>
         <p><a href="/sessions/end">Log Out</a>
       <% } else { %>
