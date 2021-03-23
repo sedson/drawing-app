@@ -9,7 +9,7 @@ const timeSince = require('../utils/timesince')
 
 // INDEX –––––––––––––––––––––––––––––––––––
 router.get('/', (req, res) => {
-  Drawing.find({}, (err, data) => {
+  Drawing.find({}).sort({'createdAt' : -1}).exec((err, data) => {
     if (err) return
     res.render('drawing/index.ejs', {
       data: data,

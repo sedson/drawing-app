@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const User = require('../models/user');
+const Drawing = require('../models/drawing');
 
 module.exports = router;
 
@@ -29,4 +30,15 @@ router.post('/', (req, res) => {
     req.session.currentUser = newUsr;
     res.redirect('/drawings');
   });
+})
+
+router.get('/:user', (req, res) => {
+  Drawing.find({createdBy: req.params.user }, (err, list) => {
+    res.render('user/index.ejs', {
+      data: list,
+      user: req.params.user,
+      currentUser: req.session.currentUser || null
+
+    })
+  })
 })

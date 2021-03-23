@@ -4,13 +4,19 @@
     <%- include('../partials/head.ejs') %>
   </head>
   <body>
+    <div class="content">
+      <h2>  <%= item.title || 'Drawn' %> by
+        <span class="avi" style="background-color: <%= item.color || 'silver' %>"></span>
+        <a href="/users/<%= item.createdBy %>" class="name"><%= item.createdBy %></a>
+      </h2>
+
     <%- include('../partials/nav.ejs') %>
-    <h1><a href="/drawings">Index</a> | <a href="/drawings/<%=item.id%>/edit">Edit</a></h1>
+    <p><a href="/drawings">Index</a> | <a href="/drawings/<%=item.id%>/edit">Edit</a></p>
     <img src="/img/<%=item.id%>" alt="">
     <p>
       <%= item.title || 'Drawn' %> by
       <span class="avi" style="background-color: <%= item.color || 'silver' %>"></span>
-      <%= item.createdBy %>
+      <a href="/users/<%= item.createdBy %>" class="name"><%= item.createdBy %></a>
     </p>
     <p class="timestamp">
       <%= timeSince(item.createdAt) %>
@@ -19,7 +25,8 @@
       <% item.editLog.forEach(edit => { %>
         <p>Edited by
           <span class="avi" style="background-color: <%= edit.editColor || 'silver' %>"></span>
-          <%= edit.editedBy %>
+          <a href="/users/<%= edit.editedBy %>" class="name"><%= edit.editedBy %></a>
+
         </p>
         <p class="timestamp">
           <%= timeSince(edit.editedAt) %>
@@ -32,4 +39,5 @@
         <button class="del">Delete</button>
       </form>
     <% } %>
+      </div>
 </html>

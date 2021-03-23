@@ -1,11 +1,15 @@
 <nav>
-  <img src="/favicon.png" alt="" width="21px" height="21px">
-  <a href="/drawings" class="home clickable">Drawing with My Friends</a>
+  <a href="/" class="clickable"><img src="/favicon.png" alt="" width="18px" height="18px"></a>
+  <p class="hideable"><a href="/" class="clickable">Drawing-with-Friends</a></p>
+  <p class=""><a href="/drawings" class="home clickable">Gallery</a></p>
+  <p class=""><a href="/drawings/new" class="home clickable">Draw</a></p>
+
+  <p class="right">
   <% if (currentUser) { %>
-    <div class="swatch" style="background-color: <%=currentUser.color%>"></div>
+    <span class="avi" style="background-color: <%= currentUser.color || 'silver' %>"></span>
     <span><%=currentUser.username%></span>
   <% } else { %>
+    <a href="/menu">Menu</a>
   <% } %>
-  <a href="/menu">Menu</a>
-  
+  </p>
 </nav>

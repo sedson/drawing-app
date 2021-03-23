@@ -5,9 +5,9 @@ const units = [
   {unit: (60 * 60 * 24), label: 'day'},
   {unit: (60 * 60 * 24 * 7), label: 'week'},
   {unit: (60 * 60 * 24 * 7 * 4), label: 'month'},
+  {unit: (60 * 60 * 24 * 7 * 52), label: 'year'},
+  {unit: (60 * 60 * 24 * 7 * 52 * 10), label: 'decade'},
 ];
-
-
 
 const timeSince = (timeThen) => {
   const timeNow = Date.now();
@@ -21,5 +21,5 @@ const timeSince = (timeThen) => {
     }
   }
 }
-
+console.log(timeSince())
 module.exports = timeSince;

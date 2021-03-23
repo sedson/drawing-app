@@ -47,16 +47,21 @@ const startDraw = (event) => {
   drawing = true;
 }
 
-const endDraw = () => {
+const endDraw = (event) => {
   drawing = false;
   ctx.beginPath();
 }
 
-const draw = (event) => {
+const draw = (event, touch) => {
   if (! drawing) return;
 
   curX = event.clientX - canvas.offsetLeft;
   curY = event.clientY - canvas.offsetTop;
+
+  if (event.touches) {
+    curX = event.touches[0].clientX - canvas.offsetLeft;
+    curY = event.touches[0].clientY - canvas.offsetTop;
+  }
 
   let d = distanceSquared(curX, curY, lastX, lastY);
 
@@ -83,3 +88,20 @@ canvas.onmousedown = startDraw;
 canvas.onmouseup = endDraw;
 canvas.onmouseleave = endDraw;
 canvas.onmousemove = draw;
+
+canvas.addEventListener('touchstart', (event) => {
+  console.log('AAAA')
+  startDraw(event);
+  event.preventDefault();
+})
+
+canvas.addEventListener('touchend', (event) => {
+  endDraw(event);
+  event.preventDefault();
+})
+
+canvas.addEventListener('touchmove', (event) => {
+  console.log('asdasd')
+  draw(event);
+  event.preventDefault();
+})

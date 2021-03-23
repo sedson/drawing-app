@@ -1,13 +1,112 @@
 * {
-  font-size: 21px;
-  font-family: sans-serif;
+  font-size: 18px;
+  font-family: Helvetica, sans-serif;
   font-weight: normal;
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #f7f7f5;
+}
+
+body {
+  padding: 1rem;
+  margin: 0;
+  padding-top: 4rem;
+}
+
+nav {
+  background-color: #f7f7f5;
+  z-index: 10;
+  width: 100%;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 1rem 1rem 0.5rem 1rem;
+  display: flex;
+  /* border-bottom: 1px dashed silver; */
+  margin-top: 0;
+  position: fixed;
+}
+
+footer {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  background: plum;
+  mix-blend-mode: multiply;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 50px;
+}
+
+footer p {
+  font-size: 0.75rem;
+  color: #f7f7f5;
+}
+
+nav p {
+  padding: 0;
+  margin: 0;
+}
+
+nav a {
+  text-decoration: none;
+}
+
+.navitem{
+  font-size: 1rem;
+  border: 1px dashed silver;
+  border-bottom: none;
+  margin: 0;
+  display: inline-block;
+  padding: 0.5rem;
+  border-radius: 1rem 1rem 0 0;
+}
+
+.navitem a {
+  text-decoration: none;
+}
+
+.navitem:hover {
 
 }
+
+.extra {
+  margin-right: 2rem;
+}
+
+h1 {
+  font-size: 3rem;
+  margin: 1rem 0;
+  font-weight: normal;
+}
+
+
+h2 {
+  font-size: 2rem;
+  margin: 1rem 0;
+}
+
+
+
+
+.right{
+  margin-left: auto;
+  margin-right: 0;
+}
+
+nav p, nav img{
+  margin-right: 1rem;
+}
+
 
 a {
-  color: dodgerblue;
+  color: black;
 }
+
 
 img {
 
@@ -25,11 +124,11 @@ img, canvas, {
 
 
 canvas {
-  background-color: cornsilk;
+  background-color: lightyellow;
   display: block;
 }
 
-img.clickable{
+img.clickable, img.dark{
   filter: brightness(0%) saturate(0%) ;
 }
 
@@ -43,7 +142,7 @@ img.clickable:hover {
 
 
 .clickable:hover{
-  color: limegreen;
+  color: plum;
 }
 
 .home {
@@ -57,6 +156,19 @@ img.clickable:hover {
   justify-content: flex-start;
 }
 
+.content {
+  /* /max-width: 960px; */
+  margin: 0 auto;
+}
+
+.centered {
+  text-align: center;
+}
+
+.content img {
+  text-align: center;
+}
+
 button {
   all: unset;
   text-decoration: underline;
@@ -66,30 +178,6 @@ button {
 
 #wipe, .del {
   color: red;
-}
-
-nav {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  border-bottom: 2px dotted black;
-  height: 1.5rem;
-  display: flex;
-  justify-content: flex-start;
-}
-
-nav p {
-  padding: 0;
-  margin: 0;
-
-}
-
-.right{
-  float: right;
-}
-
-nav * {
-  margin-right: 1rem;
 }
 
 .swatch {
@@ -125,4 +213,35 @@ nav * {
   width: 0.8rem;
   height: 0.8rem;
   display: inline-block;
+}
+
+.name {
+  color: black;
+  transition: letter-spacing 0.2s ease-in-out;
+}
+
+.name:hover {
+  letter-spacing: 0.2rem;
+}
+
+.name:hover::after {
+
+}
+
+.bg {
+  z-index: -500;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(180deg, azure 0%, #f7f7f5 10%);
+}
+
+
+@media only screen and (max-width: 600px) {
+  .hideable {
+    display: none;
+  }
 }

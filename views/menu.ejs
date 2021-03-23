@@ -4,12 +4,16 @@
     <%- include('./partials/head.ejs') %>
   </head>
   <body>
-    <%- include('./partials/nav.ejs') %>
-    <% if (currentUser) { %>
-      <p><a href="/sessions/end">Log Out</a>
-    <% } else { %>
-      <p><a href="/sessions/new">Log In</a></p>
-    <% } %>
-    <p><a href="/users/new">New User</a></p>
+    <div class="content">
+      <h1>Menu</h1>
+      <%- include('./partials/nav.ejs') %>
+      <% if (currentUser) { %>
+        <p><a href="/sessions/end">Log Out</a>
+      <% } else { %>
+        <p><a href="/sessions/new">Log In</a></p>
+      <% } %>
+      <p><a href="/users/new">New User</a></p>
+    </div>
+
   </body>
 </html>

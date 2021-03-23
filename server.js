@@ -7,7 +7,8 @@ const session = require('express-session')
 
 const mongoose = require('mongoose');
 
-const mongoURI = 'mongodb://127.0.0.1:27017/project2';
+const selectedDB = process.env.DB || 'project';
+const mongoURI = 'mongodb://127.0.0.1:27017/' + selectedDB;
 
 const db = mongoose.connection;
 
@@ -61,9 +62,19 @@ app.use('/users', user)
 const imageAPI = require('./controllers/image')
 app.use('/img', imageAPI)
 
+const Drawing = require('./models/drawing')
+
 
 app.get('/', (req, res) => {
-  res.redirect('/drawings')
+  Drawing.aggregate([ {$sample: {size: 1}} ], (err, sample) => {
+    if (err) {
+      return;
+    }
+    res.render('home.ejs', {
+      id: sample[0]._id,
+      currentUser: req.session.currentUser || null
+    })
+  })
 })
 
 app.get('/menu', (req, res) => {
