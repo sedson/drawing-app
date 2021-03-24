@@ -1,7 +1,9 @@
 /* ROOT ---------------------------------- */
 :root {
   --bg:    #fbfbfb;
-  --gray:  #e5e7d7;
+  /* --gray:  #e5e7d7; */
+  --gray:  #d3d5c3;
+
   --gray2: #8b8e6f;
   --link:  plum;
 }
@@ -57,6 +59,45 @@ nav p, nav img {
   margin-right: 0;
 }
 
+/* CONTAINERS ---------------------------------- */
+.container{
+  display: flex;
+  width: 100%;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  max-width: 2000px;
+}
+
+.griditem {
+  width: 10%;
+}
+
+
+.content {
+  margin: 0 auto;
+}
+
+.centered {
+  text-align: center;
+  margin: 0 auto;
+}
+
+
+/* IMAGES ---------------------------------- */
+.griditem img {
+  width: 100%;
+  max-width: 400px;
+}
+
+.content img {
+  margin: 0 auto;
+  display: block;
+  border:  1px solid var(--gray);
+  width: 100%;
+  max-width: 400px;
+}
+
+
 /* TYPE ---------------------------------- */
 h1 {
   font-size: 2.5rem;
@@ -77,6 +118,19 @@ a:hover {
   color: var(--gray2);
 }
 
+.content p {
+  max-width: 400px;
+  margin: 1rem auto;
+
+}
+
+.content h1 {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+
+/* BUTTONS ---------------------------------- */
 .btn {
   text-decoration: none;
   background-color: var(--gray);
@@ -100,6 +154,12 @@ a:hover {
   background-color: var(--gray);
 }
 
+.btn-area {
+  border-bottom: 1px solid  var(--gray);
+  padding: 0.5rem 0;
+  max-width: 400px;
+}
+
 .timestamp {
   color: var(--gray2);
   margin-left: 0.5em;
@@ -116,28 +176,22 @@ a:hover {
   border-radius: 2rem;
 }
 
-
-img {
-
-}
-
 img, canvas, {
   padding: 0;
   margin: 0;
 
 }
 
-
-
 .lrg {
   font-size: 1.5rem;
 }
-
 
 canvas {
   background-color: var(--gray);
   margin: 0 auto;
   display: block;
+  width: 100%;
+  max-width: 400px;
 }
 
 img.clickable, img.dark{
@@ -151,37 +205,7 @@ img.clickable:hover {
 
 
 
-.container{
-  display: flex;
-  width: 100%;
-  flex-flow: row wrap;
-  justify-content: flex-start;
-  max-width: 2000px;
-}
 
-.griditem {
-  width: 20%;
-}
-
-.griditem img {
-  width: 100%;
-}
-
-.content {
-  margin: 0 auto;
-}
-
-.centered {
-  text-align: center;
-  width: auto;
-  margin: 0 auto;
-}
-
-.content img {
-  margin: 0 auto;
-  display: block;
-  border: 1px solid var(--gray);
-}
 
 .content img.dark {
   border: none;
@@ -204,6 +228,15 @@ button {
   color: dodgerblue;
   cursor: pointer;
 }
+
+.edit {
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--gray2);
+  letter-spacing: 0.2em;
+  font-size: 0.8em;
+}
+
 
 #wipe, .del {
   color: red;
@@ -261,7 +294,7 @@ button {
 
 @media only screen and (max-width: 1600px) {
   .griditem{
-    width: 14.286%;
+    width: 14.285%;
   }
 }
 
@@ -285,6 +318,10 @@ button {
 }
 
 @media only screen and (max-width: 600px) {
+  body {
+    font-size: 16px;
+  }
+
   .hideable {
     display: none;
   }

@@ -31,3 +31,4 @@ btn.onclick = () => {
 }
 
 document.querySelector('#wipe').onclick = canvas.wipe;
+document.dispatchEvent(new Event('jsready'));

@@ -10,9 +10,11 @@
     <%- include('../partials/nav.ejs') %>
     <div class="centered">
       <canvas id="artboard" width="400" height="400"></canvas>
+      <p>
+        <a id="post" href="#" class="btn alt">Post</a>
+        <a id="wipe" href="#" class="btn alt">Clear</a>
+      </p>
 
-      <a id="post" href="#" class="btn lrg alt">Post</a>
-      <a id="wipe" href="#" class="btn lrg alt">Clear</a><br>
       <input type="text" name="title" id="title" value="" placeholder="Title">
       <p id="warning" style="display: none"></p>
     </div>

@@ -41,6 +41,7 @@ const loadCanvas = () => {
 
   img.onload = () => {
     ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+    document.dispatchEvent(new Event('jsready'));
   }
 
   img.src = dummy.dataset.src;

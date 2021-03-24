@@ -12,6 +12,15 @@
       <% } %>
 
       <img src="/img/<%=item.id%>" alt="">
+      <form action="/drawings/<%=item.id%>?_method=DELETE" method="POST">
+        <div class="centered btn-area">
+        <a href="/drawings/<%=item.id%>/edit" class="btn alt">Edit</a>
+        <% if (currentUser && (currentUser.admin || item.createdBy === currentUser.username)) { %>
+          <button class="btn alt del">Delete</button>
+        <% } %>
+        </div>
+      </form>
+
       <p>
         Drawn by
         <a href="/users/<%= item.createdBy %>" class="name btn alt">
@@ -31,11 +40,6 @@
           </p>
         <% }) %>
       <% } %>
-      <p><a href="/drawings/<%=item.id%>/edit">Edit</a></p>
-      <% if (currentUser && (currentUser.admin || item.createdBy === currentUser.username)) { %>
-        <form action="/drawings/<%=item.id%>?_method=DELETE" method="POST">
-          <button class="del">Delete</button>
-        </form>
-      <% } %>
+
     </div>
 </html>

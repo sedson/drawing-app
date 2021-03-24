@@ -9,11 +9,22 @@ const ctx = canvas.getContext("2d");
 // Clears the canvas
 canvas.wipe = () => ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-// canvas.width = window.innerWidth;
-// canvas.height = window.innerHeight;
+// magic numbers from the class
+// to deal with canvas scaling
+const canvasSize = 400;
+const padding = 16;
+
+// This handles scaling if the canvas has been scaled
+// down by css
+document.addEventListener('jsready', () => {
+  let scaleFactor = Math.min(1, (window.innerWidth - (2 * padding)) / canvasSize);
+  ctx.scale(1/scaleFactor, 1/scaleFactor);
+  scale = scaleFactor;
+})
 
 let strokeWeight = 5;
 const strokeSmoothing = 6;
+let scale = 1;
 
 let fillCol = userColor || 'black';
 
@@ -69,7 +80,7 @@ const draw = (event, touch) => {
   stroke = Math.max(1, stroke)
   stroke = updateStrokeArray(strokeHistory, stroke)
 
-  ctx.lineWidth = stroke;
+  ctx.lineWidth = stroke * scale;
   ctx.strokeStyle = fillCol;
   ctx.lineCap = 'round'
 
@@ -90,7 +101,6 @@ canvas.onmouseleave = endDraw;
 canvas.onmousemove = draw;
 
 canvas.addEventListener('touchstart', (event) => {
-  console.log('AAAA')
   startDraw(event);
   event.preventDefault();
 })
@@ -101,7 +111,6 @@ canvas.addEventListener('touchend', (event) => {
 })
 
 canvas.addEventListener('touchmove', (event) => {
-  console.log('asdasd')
   draw(event);
   event.preventDefault();
 })
