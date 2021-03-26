@@ -32,7 +32,6 @@ btn.onclick = () => {
   })
 }
 
-
 // Loading image onto canvas
 
 const loadCanvas = () => {

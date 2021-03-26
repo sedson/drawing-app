@@ -2,15 +2,21 @@
 <html lang="en" dir="ltr">
   <head>
     <%- include('../partials/head.ejs') %>
+    <script src="/js/colorpicker.js" defer></script>
   </head>
   <body>
     <%- include('../partials/nav.ejs') %>
-    <h1>New User</h1>
-    <form action="/users/" method="POST">
-      username: <input type="text" name="username" placeholder="username"><br>
-      password: <input type="text" name="password" placeholder="password"><br>
-      color: <input type="color" name="color" placeholder="a css color"><br>
-      <button>Submit</button>
-    </form>
+    <div class="content">
+      <h2 class="centered">Sign Up</h2>
+      <form action="/users/" method="POST">
+        <input type="text" name="username" placeholder="username"><br>
+        <input type="password" name="password" placeholder="password"><br>
+        <input type="text" name="color" value="" style="display: none" id="userColor">
+        <p class="small">Choose a crayon color</p>
+        <div class="swatch-area"></div>
+        <div class="btn-area centered"><button class="btn alt rec submit">Sign Up</button></div>
+        <p class="centered small">Already have an account? <a href="/sessions/new">Log in</a></p>
+      </form>
+    </div>
   </body>
 </html>

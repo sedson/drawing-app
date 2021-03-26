@@ -8,16 +8,16 @@
   </head>
   <body>
     <%- include('../partials/nav.ejs') %>
-    <div class="centered">
+    <div class="content centered">
       <canvas id="artboard" width="400" height="400"></canvas>
-      <p>
-        <a id="post" href="#" class="btn alt">Post</a>
-        <a id="wipe" href="#" class="btn alt">Clear</a>
-      </p>
-
       <input type="text" name="title" id="title" value="" placeholder="Title">
-      <p id="warning" style="display: none"></p>
+      <div class="btn-area centered">
+        <button id="wipe" href="#" class="btn alt">Clear</button>
+        <button id="post" href="#" class="btn alt submit">Post</button>
+      </p>
     </div>
-
+    <% if ( ! currentUser) { %>
+      <p id="warning" class="small"><a href="/sessions/new">Log in</a> or <a href="/users/new">sign up</a> to post drawings</p>
+    <% } %>
   </body>
 </html>

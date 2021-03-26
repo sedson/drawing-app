@@ -13,6 +13,7 @@ const DrawingSchema = new Schema({
   createdBy: {type: String},
   createdAt: {type: Number},
   color: {type: String},
+  editsLocked: {type: Boolean, default: false},
   editLog: [editSchema]
 })
 

@@ -1,0 +1,7 @@
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const randChan = () => Math.floor(Math.random() * 36) + 220;
+    const randcol = `rgb(${randChan()}, ${randChan()}, ${randChan()})`;
+    document.documentElement.style.setProperty('--bg', randcol);
+  })
+</script>

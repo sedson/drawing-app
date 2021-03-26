@@ -2,23 +2,10 @@
 <html lang="en" dir="ltr">
   <head>
     <%- include('../partials/head.ejs') %>
-    <style>
-      body{
-        visibility: visible;
-      }
-    </style>
   </head>
-
-  <body style="visibility: hidden" class="fouc">
-    <script>
-      document.querySelector('body').classList.remove('fouc')
-    </script>
-    <%- include('../partials/nav.ejs') %>
-    <%- include('../partials/drawings.ejs') %>
-
-
-    <script>
-      document.querySelector('body').style.visibility = 'visible'
-    </script>
+  <body>
+  <%- include('../partials/nav.ejs') %>
+  <%- include('../partials/drawings.ejs') %>
+  <%- include('../partials/drawbtn.ejs') %>
   </body>
 </html>

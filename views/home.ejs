@@ -5,19 +5,14 @@
   </head>
   <body>
     <%- include('./partials/nav.ejs') %>
+    <%- include('./partials/drawbtn.ejs') %>
     <div class="content">
-      <%# <h1>Drawing with Friends</h1> %>
       <img src="/img/<%=id%>" alt="" class="dark">
       <h1 class="centered">Drawing with Friends</h1>
-      <p class="centered">A collaborative <a href="/drawings" class="btn alt">gallery</a> of doodles</p>
-
-
-
-
-      <%# <p>A collaboratively made <a href="/drawings">gallery</a> full of doodles.</p> %>
-
-      <%# <h2>A collaborative gallery of doodles</h2> %>
-
+      <p class="centered">A collaborative <a href="/drawings">gallery</a> of doodles</p>
+      <div class="centered">
+        <button class="btn alt small" onclick="location.reload()">Random Drawing</button>
+      </div>
     </div>
   </body>
 </html>

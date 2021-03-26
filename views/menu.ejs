@@ -5,16 +5,24 @@
   </head>
   <body>
     <%- include('./partials/nav.ejs') %>
+    <%- include('./partials/drawbtn.ejs') %>
     <div class="content">
-      <h1>Menu</h1>
-
       <% if (currentUser) { %>
-        <p><a href="/sessions/end">Log Out</a>
+        <h2 class="centered">
+          <span class="avi" style="background-color: <%= currentUser.color || 'silver' %>"></span>
+          <%=currentUser.username%>
+        </h2>
+        <div class="btn-area centered">
+          <p><a href="/users/<%= currentUser.username %>" class="btn alt">My Drawings</a>
+          <p><a href="/sessions/end" class="btn alt">Log Out</a>
+        </div>
       <% } else { %>
-        <p><a href="/sessions/new">Log In</a></p>
+        <h2 class="centered">Menu</h2>
+        <div class="btn-area centered">
+          <p><a href="/sessions/new" class="btn alt">Log In</a>
+          <p><a href="/users/new" class="btn alt">Sign Up</a>
+        </div>
       <% } %>
-      <p><a href="/users/new">New User</a></p>
     </div>
-
   </body>
 </html>

@@ -8,7 +8,23 @@
   </head>
   <body>
     <%- include('../partials/nav.ejs') %>
-    <canvas id="artboard" width="400" height="400"></canvas>
-    <h1><a href="/drawings">Index</a> | <a id="save" href="#">Save</a></h1>
-    <img src="" data-src="/img/<%=item.id%>" id="art">
+    <div class="content">
+      <% if (item.title) { %>
+        <h2><%= item.title %></h2>
+      <% } %>
+      <canvas id="artboard" width="400" height="400"></canvas>
+      <div class="centered btn-area">
+        <a href="/drawings/<%= item.id %>" style="margin-right: 0.25em"><img src="/img/arrow.png" class="inline-icon">Back</a><br>
+      </div>
+      <div class="centered btn-area">
+        <button href="#" class="btn alt" onclick="location.reload()">Clear</button>
+        <button href="#" class="btn alt submit" id="save">Save</button>
+      </div>
+    </div>
+    <% if ( ! currentUser) { %>
+      <p id="warning" class="small centered"><a href="/sessions/new">Log in</a> or <a href="/users/new">sign up</a> to save edits</p>
+    <% } %>
+    <!-- stores the dummy image data to load onto canvas -->
+    <img src="" data-src="/img/<%=item.id%>" id="art" style="display: none">
+  </body>
 </html>

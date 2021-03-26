@@ -19,6 +19,8 @@ const padding = 16;
 document.addEventListener('jsready', () => {
   let scaleFactor = Math.min(1, (window.innerWidth - (2 * padding)) / canvasSize);
   ctx.scale(1/scaleFactor, 1/scaleFactor);
+  console.log(window.innerWidth - (2 * padding))
+  console.log('scale, ', scaleFactor)
   scale = scaleFactor;
 })
 

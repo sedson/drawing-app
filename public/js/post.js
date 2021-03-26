@@ -20,10 +20,9 @@ const btn = document.querySelector('#post');
 btn.onclick = () => {
   post().then((response) => {
     if(! response.ok) {
-      let w = document.querySelector('#warning')
-      w.style.display = 'block'
-      w.textContent = 'Log in to Post'
-      return
+      let w = document.querySelector('#warning');
+      w.innerHTML += "!";
+      return;
     }
     canvas.wipe();
     window.location.pathname = '/drawings';

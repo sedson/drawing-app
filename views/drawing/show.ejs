@@ -2,44 +2,61 @@
 <html lang="en" dir="ltr">
   <head>
     <%- include('../partials/head.ejs') %>
+    <script src="/js/lock.js" defer></script>
   </head>
   <body>
     <%- include('../partials/nav.ejs') %>
 
     <div class="content">
+
       <% if (item.title) { %>
         <h2><%= item.title %></h2>
       <% } %>
 
       <img src="/img/<%=item.id%>" alt="">
-      <form action="/drawings/<%=item.id%>?_method=DELETE" method="POST">
-        <div class="centered btn-area">
-        <a href="/drawings/<%=item.id%>/edit" class="btn alt">Edit</a>
-        <% if (currentUser && (currentUser.admin || item.createdBy === currentUser.username)) { %>
-          <button class="btn alt del">Delete</button>
-        <% } %>
-        </div>
-      </form>
 
-      <p>
-        Drawn by
+      <div class="centered btn-area flex spread">
+        <% if (item.editsLocked) { %>
+          <span class="noclick"><img src="/img/lock.png" class="inline-icon">Edit</span>
+        <% } else { %>
+          <span>
+            <img src="/img/pencil.png" class="inline-icon">
+            <a href="/drawings/<%=item.id%>/edit" class="">Edit</a>
+          </span>
+        <% } %>
+      </div>
+
+      <p class="byline"> Drawn by
         <a href="/users/<%= item.createdBy %>" class="name btn alt">
           <span class="avi" style="background-color: <%= item.color || 'silver' %>"></span>
           <%= item.createdBy%>
         </a>
         <span class="timestamp"><%= timeSince(item.createdAt) %></span>
       </p>
+
       <% if (item.editLog) { %>
-        <% item.editLog.forEach(edit => { %>
-          <p>Edited by
-            <a href="/users/<%= edit.editedBy %>" class="name btn alt">
-              <span class="avi" style="background-color: <%= edit.editColor || 'silver' %>"></span>
-              <%= edit.editedBy %>
-            </a>
-            <span class="timestamp"><%= timeSince(edit.editedAt) %></span>
-          </p>
-        <% }) %>
+        <div class="edit-log">
+          <% item.editLog.forEach(edit => { %>
+            <p>Edited by
+              <a href="/users/<%= edit.editedBy %>" class="name btn alt">
+                <span class="avi" style="background-color: <%= edit.editColor || 'silver' %>"></span>
+                <%= edit.editedBy %>
+              </a>
+              <span class="timestamp"><%= timeSince(edit.editedAt) %></span>
+            </p>
+          <% }) %>
+        </div>
       <% } %>
 
+      <% if (currentUser && (currentUser.admin || item.createdBy === currentUser.username)) { %>
+      <form action="/drawings/<%=item.id%>?_method=DELETE" method="POST" class="options">
+        <hr>
+        <div class="btn-area flex">
+          <a href="#" id="lockBtn" class="small"><%= item.editsLocked ? "Unlock" : "Lock" %> Edits</a>
+          <button class="nobtn warning small">Delete Drawing</button>
+        </div>
+      </form>
+      <% } %>
     </div>
+  </body>
 </html>
