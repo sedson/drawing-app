@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const User = require('../models/user')
+const User = require('../models/user');
+
+const hasher = require('../utils/hash');
 
 module.exports = router;
 
@@ -9,7 +11,7 @@ router.get('/new', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-  console.log(req.body)
+
   User.findOne({username: req.body.username}, (err, user) => {
 
     if (err) {
@@ -28,7 +30,7 @@ router.post('/', (req, res) => {
       return;
     }
 
-    if(req.body.password === user.password){
+    if (hasher.verify(user.password, req.body.password)) {
       req.session.currentUser = user;
       res.redirect('/drawings')
 

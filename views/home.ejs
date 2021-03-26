@@ -5,14 +5,23 @@
   </head>
   <body>
     <%- include('./partials/nav.ejs') %>
-    <%- include('./partials/drawbtn.ejs') %>
-    <div class="content">
-      <img src="/img/<%=id%>" alt="" class="dark">
+    <div class="content centered">
+      <img src="/img/<%=id%>" alt="" class="dark" width="400" height="400" style="width:100%; height:auto;">
       <h1 class="centered">Drawing with Friends</h1>
       <p class="centered">A collaborative <a href="/drawings">gallery</a> of doodles</p>
-      <div class="centered">
-        <button class="btn alt small" onclick="location.reload()">Random Drawing</button>
+
+      <div class="btn-area centered">
+        <button class="btn alt" onclick="location.reload()">Random Drawing</button>
+        <a href="/about" class="btn alt">About</a>
       </div>
+
+      <% if (! currentUser) { %>
+        <div class="spacer"></div>
+        <div class="btn-area centered">
+          <p><a href="/users/new" class="btn alt rec submit">Make Account</a></p>
+        </div>
+      <% } %>
     </div>
+    <%- include('./partials/footer.ejs') %>
   </body>
 </html>

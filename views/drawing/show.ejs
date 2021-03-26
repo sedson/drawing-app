@@ -13,7 +13,7 @@
         <h2><%= item.title %></h2>
       <% } %>
 
-      <img src="/img/<%=item.id%>" alt="">
+      <img src="/img/<%=item.id%>" alt="" width="400" height="400" style="width:100%; height:auto;">
 
       <div class="centered btn-area flex spread">
         <% if (item.editsLocked) { %>
@@ -58,5 +58,6 @@
       </form>
       <% } %>
     </div>
+  <%- include('../partials/footer.ejs') %>
   </body>
 </html>

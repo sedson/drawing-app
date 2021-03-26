@@ -1,1 +1,5 @@
-<a href="/drawings/new" class="floating-btn noline">+</a>
+<% if (currentUser) { %>
+  <a href="/drawings/new" class="floating-btn noline" style="background-color: <%=currentUser.color %>; color: white">
+    +
+  </a>
+<% } %>

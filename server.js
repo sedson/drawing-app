@@ -24,8 +24,6 @@ db.on('error', (err)=> { console.log('ERROR: ', err)});
 db.on('connected', ()=> { console.log("mongo connected")})
 db.on('disconnected', ()=> { console.log("mongo disconnected")})
 
-
-
 // MIDDLEWARE
 app.use(express.static('public'))
 app.use(express.json({limit: '10mb'}))
@@ -36,23 +34,13 @@ app.use(require('method-override')('_method'))
 app.use(session({
   secret: "sec",
   resave: false,
-   saveUninitialized: false
+  saveUninitialized: false
 }))
 
-const isAuthenticated = (req, res, next) => {
-  if(req.session.currentUser) {
-    return next();
-  } else {
-    // res.redirect('/sessions/new')
-    return next();
-  }
-}
-
-
 const drawings = require('./controllers/drawing')
-app.use('/drawings', isAuthenticated, drawings)
+app.use('/drawings', drawings)
 
-const sessions = require('./controllers/session')
+const sessions =  require('./controllers/session')
 app.use('/sessions', sessions)
 
 const user = require('./controllers/user')
@@ -86,7 +74,6 @@ app.get('/menu', (req, res) => {
 app.get('/error', (req, res) => {
   res.render('error.ejs', {
     currentUser: req.session.currentUser || null,
-    message: 'oops',
   })
 })
 

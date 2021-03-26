@@ -4,13 +4,12 @@ const router = express.Router();
 const User = require('../models/user');
 const Drawing = require('../models/drawing');
 
-const colors = require('../utils/colors')
+const hasher = require('../utils/hash');
 
 module.exports = router;
 
 router.get('/new', (req, res) => {
   res.render('user/new.ejs', {
-    colors: colors,
     currentUser: req.session.currentUser || null
   });
 })
@@ -22,7 +21,24 @@ router.get('/json', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-  User.create(req.body, (err, newUsr) => {
+
+  if (req.body.password !== req.body['confirm-password']) {
+    res.render('error.ejs', {
+      message: 'Passwords must match.',
+      currentUser: req.session.currentUser || null
+    });
+    return;
+  }
+
+  const encrypted = hasher.hash(req.body.password);
+
+  const newUser = {
+    username: req.body.username,
+    password: encrypted,
+    color: req.body.color
+  }
+
+  User.create(newUser, (err, createdUser) => {
     if (err) {
       res.render('error.ejs', {
         message: err.message,
@@ -30,7 +46,7 @@ router.post('/', (req, res) => {
       });
       return;
     }
-    req.session.currentUser = newUsr;
+    req.session.currentUser = createdUser;
     res.redirect('/drawings');
   });
 })

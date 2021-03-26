@@ -10,7 +10,7 @@ const timeSince = require('../utils/timesince')
 // INDEX –––––––––––––––––––––––––––––––––––
 router.get('/', (req, res) => {
   Drawing.find({}).sort({'createdAt' : -1}).exec((err, data) => {
-    if (err) return
+    if (err) return;
     res.render('drawing/index.ejs', {
       data: data,
       currentUser: req.session.currentUser || null
@@ -68,7 +68,7 @@ router.post('/', (req, res) => {
   }
 
   Drawing.create(newDrawing, (err, data) => {
-    if(err){
+    if (err) {
       console.log(err.message)
     } else {
       console.log('Create - Success')

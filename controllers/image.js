@@ -20,8 +20,9 @@ router.get('/:id', (req, res) => {
       return;
     }
 
-    if (! data.img) {
-      res.status(400).send('no image dat found')
+    if (! data || ! data.img) {
+      res.status(400).send('no image data found')
+      return;
     }
 
     let imgDataUrl = data.img;

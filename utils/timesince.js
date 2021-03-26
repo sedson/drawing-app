@@ -21,5 +21,5 @@ const timeSince = (timeThen) => {
     }
   }
 }
-console.log(timeSince())
+
 module.exports = timeSince;
