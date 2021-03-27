@@ -77,6 +77,12 @@ app.get('/error', (req, res) => {
   })
 })
 
+app.get('/about', (req, res) => {
+  res.render('about.ejs', {
+    currentUser: req.session.currentUser || null,
+  })
+})
+
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {

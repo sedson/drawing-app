@@ -1,43 +1,26 @@
-# Project 2
 # Drawing with Friends
 
-## User Story
-This app will be based on an html canvas drawing tool. Users will be able to:
-  * Create a username and password, and choose a color
-  * Create drawings and post them to an index page
-  * View drawings on an index page
-  * Click a drawing to see a show page that includes info about who made and edited the drawing
-  * Edit old drawings by drawing on top of them
-  * See an index page for each user of the app that will show the drawings made by that user
+A simple drawing app where users can post doodles to a shared gallery.
 
-## Models
-```
-User {
-  _id: id
-  name: String
-  password: encrypted String
-  color: String
-}
+[drawing-with-friends.online]('https://drawing-with-friends.online')
 
-Drawing {
-  _id: id
-  createdBy: String (user)
-  createdAt: Timestamp
-  publicEditing: Boolean
-  drawing: String (maybe id -> pointing to another model)
-  editLog: [{user: String, editedAt: Timestamp}]
-}
-```
+## Implementation
 
-## Routes
-| HTTP | Route | Result |
-| ---- | ----- | ------ |
-| GET | /img/id | Gets the image from datatbase as blob data (used in <img src="...">)
-| GET | /drawings/ | See all the drawings (each drawing links to its show page)
-| GET | /drawings/user | See all the drawings made or editied by a user
-| GET | /drawings/id | See one drawing including its edit history (usernames link to the userpage)
-| GET | /drawings/id/edit | Edit page for a drawing. Editing a drawing means drawing on top of it. Some drawing can be edited by any user. Other drawings can only be edited by the creator
-| GET | /drawings/new | Gets the new drawing page
-| POST | /drawings/ | adds new drawing to the database
-| PUT | /drawings/id | updates a drawing in the datatbase
-| DELETE | /drawing/ |
+The frontend drawing feature uses HTML Canvas. Canvas has a native function `toDataURL()` that returns a base64-encocoded string representing the current canvas state as a png (or jpeg). I am storing this string in my database and then streaming it back when the client requests images.
+
+The backend is a NodeJS app. I am using Mongoose and Mongo for data modeling and storing, Express for routing, and EJS for templating. I built the app following REST and MVP guide
+
+The live site is currently served by Nginx and lives on a DigitalOcean droplet running Ubuntu. I wanted to try a manual deployment to get familiar with using a remote machine and managing an environment without much auto configuration.
+
+## Features
+
+Users can:
+- Create an account and choose a crayon colol
+- Create and post drawings
+- Edit exisiting drawing
+- Manage drawings (lock/unlock and delete)
+- Log out and Log in
+
+## Goals
+
+My goal is to allow friends to doodle together. Currently the app has one global collection, where all users drawings are posted. To better encourage an intimate, friendly feel I want to implement galleries that would act as private rooms for groups of users.
