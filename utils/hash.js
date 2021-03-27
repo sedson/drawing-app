@@ -1,3 +1,5 @@
+// basic util for hashing and verfiying a password
+
 const crypto = require('crypto')
 const salt = process.env.SALT || "de9a20a535aa5afe5474b12306a1a26f";
 

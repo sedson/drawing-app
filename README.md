@@ -6,6 +6,11 @@ A simple drawing app where users can post doodles to a shared gallery.
 
 ![screenshot](/public/img/cover.png)
 
+## Thanks
+
+Charles Broskoski's Drawing project was a big inspiration – [link](http://charlesbroskoski.com/drawings/).
+
+
 ## Implementation
 
 The frontend drawing feature uses HTML Canvas. Canvas has a native function `toDataURL()` that returns a base64-encocoded string representing the current canvas state as a png (or jpeg). I am storing this string in my database and then streaming it back when the client requests images.

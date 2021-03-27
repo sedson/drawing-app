@@ -20,8 +20,12 @@ const btn = document.querySelector('#post');
 btn.onclick = () => {
   post().then((response) => {
     if(! response.ok) {
-      let w = document.querySelector('#warning');
-      w.innerHTML += "!";
+      let warning = document.querySelector('#warning');
+      if (warning) {
+        let clone = warning.cloneNode(true);
+        clone.classList.add('shrink');
+        warning.parentNode.replaceChild(clone, warning);
+      }
       return;
     }
     canvas.wipe();

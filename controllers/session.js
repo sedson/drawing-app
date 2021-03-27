@@ -6,10 +6,12 @@ const hasher = require('../utils/hash');
 
 module.exports = router;
 
+// Sign In –––––––––––––––––––––––––––––––––
 router.get('/new', (req, res) => {
   res.render('session/new.ejs', { currentUser: req.session.currentUser });
 })
 
+// Attemp to begin new session ––––––––––––
 router.post('/', (req, res) => {
 
   User.findOne({username: req.body.username}, (err, user) => {
@@ -43,6 +45,7 @@ router.post('/', (req, res) => {
   })
 })
 
+// Log Out –––––––––––––––––––––––––––––––––
 router.get('/end', (req, res) => {
   req.session.destroy(() => {
     res.redirect('/drawings')

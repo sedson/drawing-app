@@ -1,3 +1,6 @@
+// Allows users to toggle the lock state of a drawing
+// a locked drawing cannot be edited
+
 // current ID
 const id = window.location.pathname.split('/')[2];
 
@@ -13,9 +16,7 @@ const lock = async() => {
 const lockBtn = document.querySelector('#lockBtn');
 
 if(lockBtn) {
-  console.log('lockbtn found')
   lockBtn.onclick= () => {
-    console.log('clicked')
     lock().then(response => {
       if (! response.ok) {
         return;

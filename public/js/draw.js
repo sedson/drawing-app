@@ -1,5 +1,5 @@
 // Canvas drawing tool
-// main stucture from DevEd youtube channel - https://youtu.be/3GqUM4mEYKA
+// some stucture from DevEd youtube channel - https://youtu.be/3GqUM4mEYKA
 // some ideas borrowed from Charles Broskoski – http://charlesbroskoski.com/drawings/#
 // -----------------------------------------
 
@@ -14,8 +14,8 @@ canvas.wipe = () => ctx.clearRect(0, 0, canvas.width, canvas.height)
 const canvasSize = 400;
 const padding = 16;
 
-// This handles scaling if the canvas has been scaled
-// down by css
+// This handles scaling if the canvas has been scaled down by css
+// This has to be called after all other JS has loaded, so its running on its own event
 document.addEventListener('jsready', () => {
   let scaleFactor = Math.min(1, (window.innerWidth - (2 * padding)) / canvasSize);
   ctx.scale(1/scaleFactor, 1/scaleFactor);
@@ -41,8 +41,9 @@ const distanceSquared = (x1, y1, x2, y2) => {
   return dX * dX + dY * dY;
 }
 
-// Adds a value to the back of an array, and unshifts one from front
+// Adds a value to the back of an array and removes one from front
 // Returns the average
+// used for averaging the stroke width
 const updateStrokeArray = (arr, val) => {
   let sum = 0;
   for(let i = 0; i < arr.length - 1; i++){
@@ -76,6 +77,7 @@ const draw = (event, touch) => {
     curY = event.touches[0].clientY - canvas.offsetTop;
   }
 
+  // Manage the stroke width based on distance between current and last point
   let d = distanceSquared(curX, curY, lastX, lastY);
 
   let stroke = strokeWeight - (d / (strokeWeight * strokeWeight))

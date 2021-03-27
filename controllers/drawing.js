@@ -100,7 +100,6 @@ router.put('/:id', (req, res) => {
     }
   }
 
-
   Drawing.findByIdAndUpdate(req.params.id, updateOperation, (err, data) => {
     if(err) {
       console.log(err.message)
@@ -116,41 +115,23 @@ router.put('/:id/lock', (req, res) => {
   console.log('HIT')
 
   Drawing.findById(req.params.id, (err, data) => {
-    if(err){
+    if (err) {
       console.log(err.message);
       res.status(400).send();
       return;
     }
 
     data.editsLocked = ! data.editsLocked;
-    data.save().then(() =>{
-      console.log(data.editsLocked)
+    data.save().then(() => {
       res.status(200).send();
     })
-  })
-})
-
-
-// UNLOCK ––––––––––––––––––––––––––––––––––
-router.put('/:id/unlock', (req, res) => {
-  const update = {
-    $set: {editsLocked: false}
-  }
-
-  Drawing.findByIdAndUpdate(req.params.id, update, (err, data) => {
-    if(err){
-      console.log(err.message);
-      res.status(400).send();
-      return;
-    }
-    res.status(200).send();
   })
 })
 
 // DELETE ––––––––––––––––––––––––––––––––––
 router.delete('/:id', (req, res) => {
   Drawing.findByIdAndRemove(req.params.id, (err, data) => {
-    if(err) {
+    if (err) {
       console.log(err)
     }
     if(data) console.log('deleted')

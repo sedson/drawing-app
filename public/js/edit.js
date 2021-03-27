@@ -26,6 +26,12 @@ const btn = document.querySelector('#save');
 btn.onclick = () => {
   update().then(response => {
     if (! response.ok) {
+      if (warning) {
+        let warning = document.querySelector('#warning');
+        let clone = warning.cloneNode(true);
+        clone.classList.add('shrink');
+        warning.parentNode.replaceChild(clone, warning);
+      }
       return;
     }
     window.location.pathname = '/drawings/' + id;
@@ -33,7 +39,6 @@ btn.onclick = () => {
 }
 
 // Loading image onto canvas
-
 const loadCanvas = () => {
   let dummy = document.querySelector('#art');
   let img = new Image();
