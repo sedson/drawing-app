@@ -3,6 +3,7 @@
 A simple drawing app where users can post doodles to a shared gallery.
 
 [drawing-with-friends.online](https://drawing-with-friends.online)
+
 ![screenshot](/public/img/cover.png)
 
 ## Implementation
